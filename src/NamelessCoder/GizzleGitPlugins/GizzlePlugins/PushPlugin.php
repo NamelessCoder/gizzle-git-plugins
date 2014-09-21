@@ -7,7 +7,7 @@ use NamelessCoder\Gizzle\PluginInterface;
 /**
  * Class PushPlugin
  */
-class PushPlugin implements PluginInterface {
+class PushPlugin extends AbstractGitPlugin implements PluginInterface {
 
 	/**
 	 * @var array

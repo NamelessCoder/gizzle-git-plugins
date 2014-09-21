@@ -7,7 +7,7 @@ use NamelessCoder\Gizzle\PluginInterface;
 /**
  * Class CommitPlugin
  */
-class CommitPlugin implements PluginInterface {
+class CommitPlugin extends AbstractGitPlugin implements PluginInterface {
 
 	/**
 	 * @var array

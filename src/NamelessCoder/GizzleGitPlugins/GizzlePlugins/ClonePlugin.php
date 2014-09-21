@@ -7,7 +7,7 @@ use NamelessCoder\Gizzle\PluginInterface;
 /**
  * Class ClonePlugin
  */
-class ClonePlugin implements PluginInterface {
+class ClonePlugin extends AbstractGitPlugin implements PluginInterface {
 
 	/**
 	 * @var array

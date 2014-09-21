@@ -7,7 +7,7 @@ use NamelessCoder\Gizzle\PluginInterface;
 /**
  * Class CheckoutPlugin
  */
-class CheckoutPlugin implements PluginInterface {
+class CheckoutPlugin extends AbstractGitPlugin implements PluginInterface {
 
 	/**
 	 * @var array
