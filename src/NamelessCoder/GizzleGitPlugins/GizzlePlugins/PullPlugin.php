@@ -9,6 +9,10 @@ use NamelessCoder\Gizzle\PluginInterface;
  */
 class PullPlugin extends AbstractGitPlugin implements PluginInterface {
 
+	const OPTION_DIRECTORY = 'directory';
+	const OPTION_REPOSITORY = 'repository';
+	const OPTION_BRANCH = 'branch';
+
 	/**
 	 * @var array
 	 */
@@ -32,7 +36,15 @@ class PullPlugin extends AbstractGitPlugin implements PluginInterface {
 	 * @return boolean
 	 */
 	public function trigger(Payload $payload) {
-
+		if (FALSE === isset($this->settings[self::OPTION_REPOSITORY])) {
+			$this->settings[self::OPTION_REPOSITORY] = $payload->getRepository()->getUrl();
+		}
+		if (FALSE === isset($this->settings[self::OPTION_BRANCH])) {
+			$this->settings[self::OPTION_BRANCH] = $payload->getRepository()->getMasterBranch();
+		}
+		$matchesRepository = $payload->getRepository()->getUrl() === $this->settings[self::OPTION_REPOSITORY];
+		$matchesBranch = $payload->getRef() === $this->settings[self::OPTION_BRANCH];
+		return $matchesRepository && $matchesBranch;
 	}
 
 	/**
@@ -43,7 +55,20 @@ class PullPlugin extends AbstractGitPlugin implements PluginInterface {
 	 * @return void
 	 */
 	public function process(Payload $payload) {
-
+		if (FALSE === isset($this->settings[self::OPTION_DIRECTORY]) || TRUE === empty($this->settings[self::OPTION_DIRECTORY])) {
+			throw new \RuntimeException('Git Pull Plugin requires at least a directory setting');
+		}
+		$git = $this->resolveGitCommand();
+		$command = implode(' ', array(
+			'cd', $this->settings[self::OPTION_DIRECTORY], '&&',
+			$git, 'pull', $payload->getRepository()->getUrl(), $this->settings[self::OPTION_BRANCH]
+		));
+		$output = array();
+		$code = 0;
+		exec($command, $output,$code);
+		if (0 < $code) {
+			throw new \RuntimeException(sprintf('Git pull failed! Code %d, Message was: "%s"', $code, implode(PHP_EOL, $output)));
+		}
 	}
 
 }
