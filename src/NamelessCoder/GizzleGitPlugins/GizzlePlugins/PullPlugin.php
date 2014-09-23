@@ -59,16 +59,12 @@ class PullPlugin extends AbstractGitPlugin implements PluginInterface {
 			throw new \RuntimeException('Git Pull Plugin requires at least a directory setting');
 		}
 		$git = $this->resolveGitCommand();
-		$command = implode(' ', array(
-			'cd', $this->settings[self::OPTION_DIRECTORY], '&&',
-			$git, 'pull', $payload->getRepository()->getUrl(), $this->settings[self::OPTION_BRANCH]
-		));
-		$output = array();
-		$code = 0;
-		exec($command, $output,$code);
-		if (0 < $code) {
-			throw new \RuntimeException(sprintf('Git pull failed! Code %d, Message was: "%s"', $code, implode(PHP_EOL, $output)));
-		}
+		$command = array(
+			'cd', escapeshellarg($this->settings[self::OPTION_DIRECTORY]), '&&',
+			$git, 'pull',
+			escapeshellarg($payload->getRepository()->getUrl()), escapeshellarg($this->settings[self::OPTION_BRANCH])
+		);
+		$this->executeGitCommand($command);
 	}
 
 }

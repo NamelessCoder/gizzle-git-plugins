@@ -16,4 +16,20 @@ abstract class AbstractGitPlugin {
 		return $commandResolver->resolveGitCommand();
 	}
 
+	/**
+	 * @param mixed $command
+	 * @return void
+	 */
+	protected function executeGitCommand($command) {
+		if (TRUE === is_array($command)) {
+			$command = implode(' ', $command);
+		}
+		$output = array();
+		$code = 0;
+		exec($command, $output,$code);
+		if (0 < $code) {
+			throw new \RuntimeException(sprintf('Git pull failed! Code %d, Message was: "%s"', $code, implode(PHP_EOL, $output)));
+		}
+	}
+
 }
