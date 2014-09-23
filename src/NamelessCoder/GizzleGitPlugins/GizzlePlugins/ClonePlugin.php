@@ -9,6 +9,11 @@ use NamelessCoder\Gizzle\PluginInterface;
  */
 class ClonePlugin extends AbstractGitPlugin implements PluginInterface {
 
+	const OPTION_DIRECTORY = 'directory';
+	const OPTION_REPOSITORY = 'repository';
+	const OPTION_BRANCH = 'branch';
+	const OPTION_DEPTH = 'depth';
+
 	/**
 	 * @var array
 	 */
