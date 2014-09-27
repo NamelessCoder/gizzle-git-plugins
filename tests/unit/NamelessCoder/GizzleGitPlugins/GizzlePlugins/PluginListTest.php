@@ -9,6 +9,13 @@ use NamelessCoder\GizzleGitPlugins\GizzlePlugins\PluginList;
  */
 class PluginListTest extends \PHPUnit_Framework_TestCase {
 
+	public function testInitializeSetsSettings() {
+		$pluginList = new PluginList();
+		$pluginList->initialize(array('foo' => 'bar'));
+		$result = $this->getObjectAttribute($pluginList, 'settings');
+		$this->assertEquals(array('foo' => 'bar'), $result);
+	}
+
 	public function testGetPluginClassNamesReturnsValidClasses() {
 		$pluginList = new PluginList();
 		$classes = $pluginList->getPluginClassNames();

@@ -18,7 +18,7 @@ abstract class AbstractGitPlugin {
 
 	/**
 	 * @param mixed $command
-	 * @return void
+	 * @return array
 	 */
 	protected function executeGitCommand($command) {
 		if (TRUE === is_array($command)) {
@@ -30,6 +30,7 @@ abstract class AbstractGitPlugin {
 		if (0 < $code) {
 			throw new \RuntimeException(sprintf('Git pull failed! Code %d, Message was: "%s"', $code, implode(PHP_EOL, $output)));
 		}
+		return $output;
 	}
 
 }

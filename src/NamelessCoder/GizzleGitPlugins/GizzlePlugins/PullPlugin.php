@@ -64,7 +64,8 @@ class PullPlugin extends AbstractGitPlugin implements PluginInterface {
 			$git, 'pull',
 			escapeshellarg($payload->getRepository()->getUrl()), escapeshellarg($this->settings[self::OPTION_BRANCH])
 		);
-		$this->executeGitCommand($command);
+		$output = $this->executeGitCommand($command);
+		$payload->getResponse()->addOutputFromPlugin($this, $output);
 	}
 
 }
