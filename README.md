@@ -1,7 +1,7 @@
 Gizzle: Git Plugins
 ===================
 
-[![Build Status](https://travis-ci.org/NamelessCoder/gizzle-git-plugins.svg?branch=master)](https://travis-ci.org/NamelessCoder/gizzle-git-plugins) [![Coverage Status](https://img.shields.io/coveralls/NamelessCoder/gizzle-typo3-plugins.svg)](https://coveralls.io/r/NamelessCoder/gizzle-typo3-plugins)
+[![Build Status](https://travis-ci.org/NamelessCoder/gizzle-git-plugins.svg?branch=master)](https://travis-ci.org/NamelessCoder/gizzle-git-plugins) [![Coverage Status](https://img.shields.io/coveralls/NamelessCoder/gizzle-git-plugins.svg)](https://coveralls.io/r/NamelessCoder/gizzle-git-plugins?branch=master)
 
 Plugins to perform Git operations from a [Gizzle GitHub Webhook Listener](https://github.com/NamelessCoder/gizzle).
 
