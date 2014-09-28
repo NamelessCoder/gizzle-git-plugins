@@ -11,11 +11,17 @@ use NamelessCoder\GizzleGitPlugins\Resolver\GitCommandResolver;
 abstract class AbstractGitPlugin extends AbstractPlugin implements PluginInterface {
 
 	/**
+	 * @return GitCommandResolver
+	 */
+	protected function getGitCommandResolver() {
+		return new GitCommandResolver();
+	}
+
+	/**
 	 * @return string
 	 */
 	protected function resolveGitCommand() {
-		$commandResolver = new GitCommandResolver();
-		return $commandResolver->resolveGitCommand();
+		return $this->getGitCommandResolver()->resolveGitCommand();
 	}
 
 	/**
