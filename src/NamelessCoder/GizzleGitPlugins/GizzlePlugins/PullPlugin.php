@@ -21,15 +21,11 @@ class PullPlugin extends AbstractGitPlugin implements PluginInterface {
 	 * @return boolean
 	 */
 	public function trigger(Payload $payload) {
-		if (FALSE === isset($this->settings[self::OPTION_REPOSITORY])) {
-			$this->settings[self::OPTION_REPOSITORY] = $payload->getRepository()->getUrl();
-		}
-		if (FALSE === isset($this->settings[self::OPTION_BRANCH])) {
-			$this->settings[self::OPTION_BRANCH] = $payload->getRepository()->getMasterBranch();
-		}
-		$matchesRepository = $payload->getRepository()->getUrl() === $this->settings[self::OPTION_REPOSITORY];
-		$matchesBranch = $payload->getRef() === $this->settings[self::OPTION_BRANCH];
-		return $matchesRepository && $matchesBranch;
+		$url = $payload->getRepository()->getUrl();
+		$branch = $payload->getRepository()->getMasterBranch();
+		$matchesRepository = $url === $this->getSettingValue(self::OPTION_REPOSITORY, $url);
+		$matchesBranch = $payload->getRef() === 'refs/heads/' . $this->getSettingValue(self::OPTION_BRANCH, $branch);
+		return ($matchesRepository && $matchesBranch);
 	}
 
 	/**
@@ -40,14 +36,16 @@ class PullPlugin extends AbstractGitPlugin implements PluginInterface {
 	 * @return void
 	 */
 	public function process(Payload $payload) {
-		if (FALSE === isset($this->settings[self::OPTION_DIRECTORY]) || TRUE === empty($this->settings[self::OPTION_DIRECTORY])) {
+		$directory = $this->getSettingValue(self::OPTION_DIRECTORY);
+		$branch = $this->getSettingValue(self::OPTION_BRANCH, $payload->getRepository()->getMasterBranch());
+		$url = $payload->getRepository()->getUrl();
+		if (TRUE === empty($directory)) {
 			throw new \RuntimeException('Git Pull Plugin requires at least a directory setting');
 		}
 		$git = $this->resolveGitCommand();
 		$command = array(
-			'cd', escapeshellarg($this->settings[self::OPTION_DIRECTORY]), '&&',
-			$git, 'pull',
-			escapeshellarg($payload->getRepository()->getUrl()), escapeshellarg($this->settings[self::OPTION_BRANCH])
+			'cd', escapeshellarg($directory), '&&',
+			$git, 'pull', escapeshellarg($url), escapeshellarg($branch)
 		);
 		$output = $this->executeGitCommand($command);
 		$payload->getResponse()->addOutputFromPlugin($this, $output);
