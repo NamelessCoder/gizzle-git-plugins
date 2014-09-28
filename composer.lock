@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1f8263510d03867f24cfea09ca848792",
+    "hash": "d0e812baa2903203dcd53433c0bdf377",
     "packages": [
         {
             "name": "milo/github-api",
@@ -51,16 +51,16 @@
         },
         {
             "name": "namelesscoder/gizzle",
-            "version": "dev-master",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/NamelessCoder/gizzle.git",
-                "reference": "294230dd89c6d8d05281d5762293de2581ce1997"
+                "reference": "95f200503629e9391f39999098b6ca0e82b2bea6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/NamelessCoder/gizzle/zipball/294230dd89c6d8d05281d5762293de2581ce1997",
-                "reference": "294230dd89c6d8d05281d5762293de2581ce1997",
+                "url": "https://api.github.com/repos/NamelessCoder/gizzle/zipball/95f200503629e9391f39999098b6ca0e82b2bea6",
+                "reference": "95f200503629e9391f39999098b6ca0e82b2bea6",
                 "shasum": ""
             },
             "require": {
@@ -68,7 +68,7 @@
                 "symfony/yaml": "~2.5.3"
             },
             "require-dev": {
-                "phpunit/phpunit": "4.1.*",
+                "phpunit/phpunit": "4.3.*",
                 "satooshi/php-coveralls": "dev-master"
             },
             "type": "library",
@@ -81,7 +81,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "GPLv3"
+                "MIT"
             ],
             "authors": [
                 {
@@ -90,7 +90,15 @@
                 }
             ],
             "description": "GitHub Webhook Listener with plugin-based API for creating your own triggerered actions",
-            "time": "2014-09-28 02:14:56"
+            "keywords": [
+                "HOOK",
+                "git",
+                "github",
+                "php",
+                "plugin",
+                "webhook"
+            ],
+            "time": "2014-09-28 12:45:54"
         },
         {
             "name": "symfony/yaml",
@@ -792,9 +800,9 @@
 
     ],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "namelesscoder/gizzle": 20
-    },
+    "stability-flags": [
+
+    ],
     "prefer-stable": false,
     "platform": [
 
