@@ -14,21 +14,6 @@ class PullPlugin extends AbstractGitPlugin implements PluginInterface {
 	const OPTION_BRANCH = 'branch';
 
 	/**
-	 * @var array
-	 */
-	protected $settings = array();
-
-	/**
-	 * Initialize the plugin with an array of settings.
-	 *
-	 * @param array $settings
-	 * @return void
-	 */
-	public function initialize(array $settings) {
-		$this->settings = $settings;
-	}
-
-	/**
 	 * Analyse $payload and return TRUE if this plugin should
 	 * be triggered in processing the payload.
 	 *

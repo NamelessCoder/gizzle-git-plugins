@@ -1,12 +1,14 @@
 <?php
 namespace NamelessCoder\GizzleGitPlugins\GizzlePlugins;
 
+use NamelessCoder\Gizzle\AbstractPlugin;
+use NamelessCoder\Gizzle\PluginInterface;
 use NamelessCoder\GizzleGitPlugins\Resolver\GitCommandResolver;
 
 /**
  * Class AbstractGitPlugin
  */
-abstract class AbstractGitPlugin {
+abstract class AbstractGitPlugin extends AbstractPlugin implements PluginInterface {
 
 	/**
 	 * @return string
