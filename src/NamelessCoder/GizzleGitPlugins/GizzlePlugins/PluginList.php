@@ -39,6 +39,12 @@ class PluginList implements PluginListInterface {
 		if (TRUE === $this->isEnabled('NamelessCoder\\GizzleGitPlugins\\GizzlePlugins\\PullPlugin')) {
 			$plugins[] = 'NamelessCoder\\GizzleGitPlugins\\GizzlePlugins\\PullPlugin';
 		}
+		if (TRUE === $this->isEnabled('NamelessCoder\\GizzleGitPlugins\\GizzlePlugins\\CommitPlugin')) {
+			$plugins[] = 'NamelessCoder\\GizzleGitPlugins\\GizzlePlugins\\CommitPlugin';
+		}
+		if (TRUE === $this->isEnabled('NamelessCoder\\GizzleGitPlugins\\GizzlePlugins\\PushPlugin')) {
+			$plugins[] = 'NamelessCoder\\GizzleGitPlugins\\GizzlePlugins\\PushPlugin';
+		}
 		return $plugins;
 	}
 
