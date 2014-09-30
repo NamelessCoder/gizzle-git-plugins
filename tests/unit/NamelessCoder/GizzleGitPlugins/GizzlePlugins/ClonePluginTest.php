@@ -45,16 +45,30 @@ class ClonePluginTest extends \PHPUnit_Framework_TestCase {
 	public function getSettingsAndExpectedCommands() {
 		return array(
 			array(
-				array(ClonePlugin::OPTION_DIRECTORY => '.', ClonePlugin::OPTION_BRANCH => 'master', ClonePlugin::OPTION_REPOSITORY => 'foobar'),
-				array('git', 'clone', "'foobar'", '.')
+				array(
+					ClonePlugin::OPTION_DIRECTORY => '.',
+					ClonePlugin::OPTION_BRANCH => 'master',
+					ClonePlugin::OPTION_REPOSITORY => 'foobar'
+				),
+				array('git', 'clone', escapeshellarg('foobar'), '.')
 			),
 			array(
-				array(ClonePlugin::OPTION_DIRECTORY => '.', ClonePlugin::OPTION_BRANCH => 'master', ClonePlugin::OPTION_REPOSITORY => 'foobar', ClonePlugin::OPTION_SINGLE => TRUE),
-				array('git', 'clone', "'foobar'", '.', ClonePlugin::COMMAND_SINGLEBRANCH, "'master'")
+				array(
+					ClonePlugin::OPTION_DIRECTORY => '.',
+					ClonePlugin::OPTION_BRANCH => 'master',
+					ClonePlugin::OPTION_REPOSITORY => 'foobar',
+					ClonePlugin::OPTION_SINGLE => TRUE
+				),
+				array('git', 'clone', escapeshellarg('foobar'), '.', ClonePlugin::COMMAND_SINGLEBRANCH, escapeshellarg('master'))
 			),
 			array(
-				array(ClonePlugin::OPTION_DIRECTORY => '.', ClonePlugin::OPTION_BRANCH => 'master', ClonePlugin::OPTION_REPOSITORY => 'foobar', ClonePlugin::OPTION_DEPTH => 11),
-				array('git', 'clone', "'foobar'", '.', ClonePlugin::COMMAND_DEPTH, 11)
+				array(
+					ClonePlugin::OPTION_DIRECTORY => '.',
+					ClonePlugin::OPTION_BRANCH => 'master',
+					ClonePlugin::OPTION_REPOSITORY => 'foobar',
+					ClonePlugin::OPTION_DEPTH => 11
+				),
+				array('git', 'clone', escapeshellarg('foobar'), '.', ClonePlugin::COMMAND_DEPTH, 11)
 			),
 		);
 	}
