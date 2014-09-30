@@ -19,35 +19,48 @@ use NamelessCoder\GizzleGitPlugins\GizzlePlugins\PullPlugin;
  */
 class PullPluginTest extends \PHPUnit_Framework_TestCase {
 
-	public function testProcessCallsExpectedMethodSequence() {
-		$expectedCommandArray = array('cd', "'.'", '&&', 'foobar', 'pull', "'foobar'", "'master'");
-		$plugin = $this->getMock('NamelessCoder\\GizzleGitPlugins\\GizzlePlugins\\PullPlugin', array('resolveGitCommand', 'executeGitCommand'));
-		$plugin->expects($this->once())->method('resolveGitCommand')->will($this->returnValue('foobar'));
-		$plugin->expects($this->once())->method('executeGitCommand')->with($expectedCommandArray)->will($this->returnValue(array('foo')));
-		$response = $this->getMock('NamelessCoder\\Gizzle\\Response', array('addOutputFromPlugin'));
-		$response->expects($this->once())->method('addOutputFromPlugin')->with($plugin, array('foo'));
+	/**
+	 * @dataProvider getSettingsAndExpectedCommands
+	 * @param array $settings
+	 * @param array $expectedCommand
+	 */
+	public function testProcess($settings, $expectedCommand) {
+		$mock = $this->getMock('NamelessCoder\\GizzleGitPlugins\\GizzlePlugins\\PullPlugin', array('resolveGitCommand', 'executeGitCommand'));
 		$repository = $this->getMock('NamelessCoder\\Gizzle\\Repository', array('getMasterBranch', 'getUrl'));
+		$response = $this->getMock('NamelessCoder\\Gizzle\\Response', array('addOutputFromPlugin'));
+		$response->expects($this->once())->method('addOutputFromPlugin')->with($mock, array());
 		$repository->expects($this->any())->method('getMasterBranch')->will($this->returnValue('master'));
 		$repository->expects($this->any())->method('getUrl')->will($this->returnValue('foobar'));
 		$payload = $this->getMock('NamelessCoder\\Gizzle\\Payload', array('getRepository', 'getResponse'), array(), '', FALSE);
 		$payload->expects($this->any())->method('getRepository')->will($this->returnValue($repository));
 		$payload->expects($this->once())->method('getResponse')->will($this->returnValue($response));
-		$url = 'foobar';
-		$ref = 'master';
-		$settings = array(PullPlugin::OPTION_REPOSITORY => $url, PullPlugin::OPTION_BRANCH => $ref, PullPlugin::OPTION_DIRECTORY => '.');
-		$plugin->initialize($settings);
-		$plugin->process($payload);
+		$mock->expects($this->once())->method('resolveGitCommand')->will($this->returnValue('git'));
+		$mock->expects($this->once())->method('executeGitCommand')->with($expectedCommand)->will($this->returnValue(array()));
+		$mock->initialize($settings);
+		$mock->process($payload);
 	}
 
-	public function testProcessThrowsErrorWhenNoDirectoryIsConfigured() {
-		$plugin = new PullPlugin();
-		$repository = $this->getMock('NamelessCoder\\Gizzle\\Repository', array('getMasterBranch', 'getUrl'));
-		$repository->expects($this->any())->method('getMasterBranch')->will($this->returnValue('master'));
-		$repository->expects($this->any())->method('getUrl')->will($this->returnValue('foobar'));
-		$payload = $this->getMock('NamelessCoder\\Gizzle\\Payload', array('getRepository'), array(), '', FALSE);
-		$payload->expects($this->any())->method('getRepository')->will($this->returnValue($repository));
-		$this->setExpectedException('InvalidArgumentException');
-		$plugin->process($payload);
+	/**
+	 * @return array
+	 */
+	public function getSettingsAndExpectedCommands() {
+		return array(
+			array(
+				array(
+					PullPlugin::OPTION_DIRECTORY => '.',
+					PullPlugin::OPTION_REPOSITORY => 'foobar'
+				),
+				array('cd', "'.'", '&&', 'git', 'pull', escapeshellarg('foobar'), escapeshellarg('master'))
+			),
+			array(
+				array(
+					PullPlugin::OPTION_DIRECTORY => '.',
+					PullPlugin::OPTION_REPOSITORY => 'foobar',
+					PullPlugin::OPTION_REBASE => TRUE
+				),
+				array('cd', "'.'", '&&', 'git', 'pull', escapeshellarg('foobar'), escapeshellarg('master'), PullPlugin::COMMAND_REBASE)
+			),
+		);
 	}
 
 }

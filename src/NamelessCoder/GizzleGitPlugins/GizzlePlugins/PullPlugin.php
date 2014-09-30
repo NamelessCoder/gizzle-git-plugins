@@ -20,6 +20,8 @@ use NamelessCoder\Gizzle\PluginInterface;
 class PullPlugin extends AbstractGitPlugin implements PluginInterface {
 
 	const COMMAND = 'pull';
+	const COMMAND_REBASE = '--rebase';
+	const OPTION_REBASE = 'rebase';
 
 	/**
 	 * Perform whichever task the Plugin should perform based
@@ -37,6 +39,9 @@ class PullPlugin extends AbstractGitPlugin implements PluginInterface {
 			'cd', escapeshellarg($directory), '&&',
 			$git, self::COMMAND, escapeshellarg($url), escapeshellarg($branch)
 		);
+		if (TRUE === (boolean) $this->getSettingValue(self::OPTION_REBASE, FALSE)) {
+			$command[] = self::COMMAND_REBASE;
+		}
 		$output = $this->executeGitCommand($command);
 		$payload->getResponse()->addOutputFromPlugin($this, $output);
 	}
