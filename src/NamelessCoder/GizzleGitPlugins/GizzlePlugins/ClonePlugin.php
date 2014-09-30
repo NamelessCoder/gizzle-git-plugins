@@ -19,9 +19,31 @@ use NamelessCoder\Gizzle\PluginInterface;
  */
 class ClonePlugin extends AbstractGitPlugin implements PluginInterface {
 
-	const OPTION_DIRECTORY = 'directory';
-	const OPTION_REPOSITORY = 'repository';
-	const OPTION_BRANCH = 'branch';
+	const COMMAND = 'clone';
+	const COMMAND_SINGLEBRANCH = '--single-branch';
+	const COMMAND_DEPTH = '--depth';
 	const OPTION_DEPTH = 'depth';
+	const OPTION_SINGLE = 'single';
+
+	/**
+	 * @param Payload $payload
+	 */
+	public function process(Payload $payload) {
+		$directory = $this->getDirectorySettingOrFail(FALSE);
+		$url = $this->getSettingValue(self::OPTION_REPOSITORY, $payload->getRepository()->getUrl());
+		$depth = $this->getSettingValue(self::OPTION_DEPTH, 0);
+		$git = $this->resolveGitCommand();
+		$command = array($git, self::COMMAND, escapeshellarg($url), $directory);
+		if (0 < $depth) {
+			$command[] = self::COMMAND_DEPTH;
+			$command[] = $depth;
+		}
+		if (TRUE === (boolean) $this->getSettingValue(self::OPTION_SINGLE, FALSE)) {
+			$command[] = self::COMMAND_SINGLEBRANCH;
+			$command[] = escapeshellarg($this->getSettingValue(self::OPTION_BRANCH, $payload->getRepository()->getMasterBranch()));
+		}
+		$output = $this->executeGitCommand($command);
+		$payload->getResponse()->addOutputFromPlugin($this, $output);
+	}
 
 }
