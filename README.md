@@ -11,35 +11,42 @@ Settings
 The following `Settings.yml` file shows every possible setting for every plugin in this collection with sample values. **The values do not represent defaults - you must configure each plugin with at least the minimum required arguments of the corresponding Git command.
 
 ```yaml
-NamelessCoder\\GizzleGitPlugins:
-  NamelessCoder\\GizzleGitPlugins\\GizzlePlugins\\PullPlugin:
+NamelessCoder\GizzleGitPlugins:
+  NamelessCoder\GizzleGitPlugins\GizzlePlugins\ClonePlugin:
     enabled: true
-    repository: localpath
+    directory: localpath
     branch: master
-    checkout: true
-    reset: true
+    repository: url-or-remote-name
+    single: true
+    depth: 50
+    rebase: true
+  NamelessCoder\GizzleGitPlugins\GizzlePlugins\PullPlugin:
+    enabled: true
+    directory: localpath
+    repository: url-or-remote-name
+    branch: master
+    rebase: true
+    depth: 1
+  NamelessCoder\GizzleGitPlugins\GizzlePlugins\ResetPlugin:
+    enabled: true
+    directory: localpath
     hard: true
-  NamelessCoder\\GizzleGitPlugins\\GizzlePlugins\\PushPlugin:
+    head: shortname-like-HEAD^1-or-sha1
+  NamelessCoder\GizzleGitPlugins\GizzlePlugins\PushPlugin:
     enabled: true
     repository: localpath
     branch: master
     checkout: true
     remote: originnameorurl
     head: remote branch name
-  NamelessCoder\\GizzleGitPlugins\\GizzlePlugins\\CommitPlugin:
+  NamelessCoder\GizzleGitPlugins\GizzlePlugins\CommitPlugin:
     enabled: true
     repository: localpath
     branch: master
     checkout: true
     files: *
     add: true
-  NamelessCoder\\GizzleGitPlugins\\GizzlePlugins\\ClonePlugin:
-    enabled: true
-    repository: url
-    path: localpath
-    branch: master
-    depth: 1
-  NamelessCoder\\GizzleGitPlugins\\GizzlePlugins\\CheckoutPlugin:
+  NamelessCoder\GizzleGitPlugins\GizzlePlugins\CheckoutPlugin:
     enabled: true
     repository: localpath
     branch: master
