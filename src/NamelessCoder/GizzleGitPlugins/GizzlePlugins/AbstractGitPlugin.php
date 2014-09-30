@@ -21,6 +21,7 @@ use NamelessCoder\GizzleGitPlugins\Resolver\GitCommandResolver;
  */
 abstract class AbstractGitPlugin extends AbstractPlugin implements PluginInterface {
 
+	const OPTION_ENABLED = 'enabled';
 	const OPTION_DIRECTORY = 'directory';
 	const OPTION_REPOSITORY = 'remote';
 	const OPTION_BRANCH = 'branch';
@@ -35,9 +36,10 @@ abstract class AbstractGitPlugin extends AbstractPlugin implements PluginInterfa
 	public function trigger(Payload $payload) {
 		$url = $payload->getRepository()->getUrl();
 		$branch = $payload->getRepository()->getMasterBranch();
+		$isEnabled = (boolean) $this->getSettingValue(self::OPTION_ENABLED, TRUE);
 		$matchesRepository = $url === $this->getSettingValue(self::OPTION_REPOSITORY, $url);
 		$matchesBranch = $payload->getRef() === 'refs/heads/' . $this->getSettingValue(self::OPTION_BRANCH, $branch);
-		return ($matchesRepository && $matchesBranch);
+		return ($matchesRepository && $matchesBranch && $isEnabled);
 	}
 
 	/**

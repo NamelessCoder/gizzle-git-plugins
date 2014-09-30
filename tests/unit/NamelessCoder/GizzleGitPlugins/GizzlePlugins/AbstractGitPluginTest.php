@@ -113,6 +113,15 @@ class AbstractGitPluginTest extends \PHPUnit_Framework_TestCase {
 			array($validSettings, $this->getPayloadFor($validSettings, 'master'), TRUE),
 			array($validSettings, $this->getPayloadFor($this->getSettingsFor('foobar', 'development'), 'master'), FALSE),
 			array($validSettings, $this->getPayloadFor($this->getSettingsFor('foobar2', 'development'), 'development'), FALSE),
+			// enabled setting FALSE ignores any Payload
+			array(array(AbstractGitPlugin::OPTION_ENABLED => FALSE), $this->getPayloadFor($this->getSettingsFor('any', 'development'), 'development'), FALSE),
+			array(array(AbstractGitPlugin::OPTION_ENABLED => FALSE), $this->getPayloadFor($this->getSettingsFor('any', 'master'), 'development'), FALSE),
+			array(array(AbstractGitPlugin::OPTION_ENABLED => FALSE), $this->getPayloadFor($this->getSettingsFor('any', 'development'), 'master'), FALSE),
+			array(array(AbstractGitPlugin::OPTION_ENABLED => FALSE), $this->getPayloadFor($this->getSettingsFor('any', 'master'), 'master'), FALSE),
+			array(array(AbstractGitPlugin::OPTION_ENABLED => FALSE), $this->getPayloadFor($this->getSettingsFor('other', 'master'), 'master'), FALSE),
+			array(array(AbstractGitPlugin::OPTION_ENABLED => FALSE), $this->getPayloadFor($this->getSettingsFor('other', 'development'), 'master'), FALSE),
+			array(array(AbstractGitPlugin::OPTION_ENABLED => FALSE), $this->getPayloadFor($this->getSettingsFor('other', 'master'), 'development'), FALSE),
+			array(array(AbstractGitPlugin::OPTION_ENABLED => FALSE), $this->getPayloadFor($this->getSettingsFor('other', 'development'), 'development'), FALSE),
 		);
 	}
 
