@@ -46,7 +46,7 @@ class PullPluginTest extends \PHPUnit_Framework_TestCase {
 		$repository->expects($this->any())->method('getUrl')->will($this->returnValue('foobar'));
 		$payload = $this->getMock('NamelessCoder\\Gizzle\\Payload', array('getRepository'), array(), '', FALSE);
 		$payload->expects($this->any())->method('getRepository')->will($this->returnValue($repository));
-		$this->setExpectedException('RuntimeException');
+		$this->setExpectedException('InvalidArgumentException');
 		$plugin->process($payload);
 	}
 

@@ -19,6 +19,8 @@ use NamelessCoder\Gizzle\PluginInterface;
  */
 class PullPlugin extends AbstractGitPlugin implements PluginInterface {
 
+	const COMMAND = 'pull';
+
 	/**
 	 * Perform whichever task the Plugin should perform based
 	 * on the payload's data.
@@ -27,16 +29,13 @@ class PullPlugin extends AbstractGitPlugin implements PluginInterface {
 	 * @return void
 	 */
 	public function process(Payload $payload) {
-		$directory = $this->getSettingValue(self::OPTION_DIRECTORY);
+		$directory = $this->getDirectorySettingOrFail();
 		$branch = $this->getSettingValue(self::OPTION_BRANCH, $payload->getRepository()->getMasterBranch());
-		$url = $payload->getRepository()->getUrl();
-		if (TRUE === empty($directory)) {
-			throw new \RuntimeException('Git Pull Plugin requires at least a directory setting');
-		}
+		$url = $this->getSettingValue(self::OPTION_REPOSITORY, $payload->getRepository()->getUrl());
 		$git = $this->resolveGitCommand();
 		$command = array(
 			'cd', escapeshellarg($directory), '&&',
-			$git, 'pull', escapeshellarg($url), escapeshellarg($branch)
+			$git, self::COMMAND, escapeshellarg($url), escapeshellarg($branch)
 		);
 		$output = $this->executeGitCommand($command);
 		$payload->getResponse()->addOutputFromPlugin($this, $output);

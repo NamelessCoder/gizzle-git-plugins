@@ -17,6 +17,19 @@ use NamelessCoder\GizzleGitPlugins\Tests\Fixtures\GizzlePlugins\AccessibleGitPlu
 
 class AbstractGitPluginTest extends \PHPUnit_Framework_TestCase {
 
+	public function testGetAndDirectorySettingOrFailThrowsExceptionIfMissingSetting() {
+		$plugin = new AccessibleGitPlugin();
+		$this->setExpectedException('InvalidArgumentException');
+		$plugin->getDirectorySettingOrFail();
+	}
+
+	public function testGetAndDirectorySettingOrFailThrowsExceptionIfDirectoryMissing() {
+		$plugin = new AccessibleGitPlugin();
+		$plugin->initialize(array(AccessibleGitPlugin::OPTION_DIRECTORY => 'issetbutdoesnotexist'));
+		$this->setExpectedException('InvalidArgumentException');
+		$plugin->getDirectorySettingOrFail();
+	}
+
 	public function testExecuteCommandExecutesCommandAndSetsOutput() {
 		$plugin = new AccessibleGitPlugin();
 		$command = 'pwd';

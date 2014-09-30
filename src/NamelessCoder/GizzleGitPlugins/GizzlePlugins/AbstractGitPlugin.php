@@ -41,6 +41,21 @@ abstract class AbstractGitPlugin extends AbstractPlugin implements PluginInterfa
 	}
 
 	/**
+	 * @return string
+	 * @throws \InvalidArgumentException
+	 */
+	protected function getDirectorySettingOrFail($requireExistingDirectory = TRUE) {
+		$directory = $this->getSettingValue(self::OPTION_DIRECTORY);
+		if (TRUE === empty($directory)) {
+			throw new \InvalidArgumentException('Plugin requires at least a directory setting');
+		}
+		if (TRUE === $requireExistingDirectory && FALSE === is_dir($directory)) {
+			throw new \InvalidArgumentException('Directory does not exist: ' . $directory);
+		}
+		return $directory;
+	}
+
+	/**
 	 * @return GitCommandResolver
 	 */
 	protected function getGitCommandResolver() {

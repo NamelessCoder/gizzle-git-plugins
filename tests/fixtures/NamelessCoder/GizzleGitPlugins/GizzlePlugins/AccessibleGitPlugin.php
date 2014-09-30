@@ -36,4 +36,8 @@ class AccessibleGitPlugin extends AbstractGitPlugin implements PluginInterface {
 		return parent::executeCommand($command, $output);
 	}
 
+	public function getDirectorySettingOrFail($requireExistingDirectory = TRUE) {
+		return parent::getDirectorySettingOrFail($requireExistingDirectory);
+	}
+
 }
