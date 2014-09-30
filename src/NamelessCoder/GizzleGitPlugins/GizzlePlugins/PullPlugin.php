@@ -9,25 +9,6 @@ use NamelessCoder\Gizzle\PluginInterface;
  */
 class PullPlugin extends AbstractGitPlugin implements PluginInterface {
 
-	const OPTION_DIRECTORY = 'directory';
-	const OPTION_REPOSITORY = 'repository';
-	const OPTION_BRANCH = 'branch';
-
-	/**
-	 * Analyse $payload and return TRUE if this plugin should
-	 * be triggered in processing the payload.
-	 *
-	 * @param Payload $payload
-	 * @return boolean
-	 */
-	public function trigger(Payload $payload) {
-		$url = $payload->getRepository()->getUrl();
-		$branch = $payload->getRepository()->getMasterBranch();
-		$matchesRepository = $url === $this->getSettingValue(self::OPTION_REPOSITORY, $url);
-		$matchesBranch = $payload->getRef() === 'refs/heads/' . $this->getSettingValue(self::OPTION_BRANCH, $branch);
-		return ($matchesRepository && $matchesBranch);
-	}
-
 	/**
 	 * Perform whichever task the Plugin should perform based
 	 * on the payload's data.
