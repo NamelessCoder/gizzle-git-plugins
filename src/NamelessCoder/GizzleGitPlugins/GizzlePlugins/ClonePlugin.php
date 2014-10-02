@@ -45,7 +45,10 @@ class ClonePlugin extends AbstractGitPlugin implements PluginInterface {
 		}
 		$command[] = escapeshellarg($url);
 		$command[] = $directory;
-		$output = $this->executeGitCommand($command);
+		$output = array(
+			'Executing Git clone command: ' . implode(' ', $command)
+		);
+		$output = array_merge($output, $this->executeGitCommand($command));
 		$payload->getResponse()->addOutputFromPlugin($this, $output);
 	}
 

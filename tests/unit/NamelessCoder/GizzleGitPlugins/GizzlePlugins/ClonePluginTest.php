@@ -27,7 +27,7 @@ class ClonePluginTest extends \PHPUnit_Framework_TestCase {
 		$mock = $this->getMock('NamelessCoder\\GizzleGitPlugins\\GizzlePlugins\\ClonePlugin', array('resolveGitCommand', 'executeGitCommand'));
 		$repository = $this->getMock('NamelessCoder\\Gizzle\\Repository', array('getMasterBranch', 'getUrl'));
 		$response = $this->getMock('NamelessCoder\\Gizzle\\Response', array('addOutputFromPlugin'));
-		$response->expects($this->once())->method('addOutputFromPlugin')->with($mock, array());
+		$response->expects($this->once())->method('addOutputFromPlugin')->with($mock);
 		$repository->expects($this->any())->method('getMasterBranch')->will($this->returnValue('master'));
 		$repository->expects($this->any())->method('getUrl')->will($this->returnValue('foobar'));
 		$payload = $this->getMock('NamelessCoder\\Gizzle\\Payload', array('getRepository', 'getResponse'), array(), '', FALSE);
