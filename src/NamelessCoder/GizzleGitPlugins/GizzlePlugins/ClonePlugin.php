@@ -30,6 +30,7 @@ class ClonePlugin extends AbstractGitPlugin implements PluginInterface {
 	 */
 	public function process(Payload $payload) {
 		$directory = $this->getDirectorySettingOrFail(FALSE);
+		$directory = sprintf($directory, $payload->getRepository()->getName());
 		$url = $this->getSettingValue(self::OPTION_REPOSITORY, $payload->getRepository()->getUrl());
 		$depth = $this->getSettingValue(self::OPTION_DEPTH, 0);
 		$git = $this->resolveGitCommand();
