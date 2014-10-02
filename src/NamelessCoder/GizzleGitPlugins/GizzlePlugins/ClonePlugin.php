@@ -34,7 +34,7 @@ class ClonePlugin extends AbstractGitPlugin implements PluginInterface {
 		$url = $this->getSettingValue(self::OPTION_REPOSITORY, $payload->getRepository()->getUrl());
 		$depth = $this->getSettingValue(self::OPTION_DEPTH, 0);
 		$git = $this->resolveGitCommand();
-		$command = array($git, self::COMMAND, escapeshellarg($url), $directory);
+		$command = array($git, self::COMMAND);
 		if (0 < $depth) {
 			$command[] = self::COMMAND_DEPTH;
 			$command[] = $depth;
@@ -43,6 +43,8 @@ class ClonePlugin extends AbstractGitPlugin implements PluginInterface {
 			$command[] = self::COMMAND_SINGLEBRANCH;
 			$command[] = escapeshellarg($this->getSettingValue(self::OPTION_BRANCH, $payload->getRepository()->getMasterBranch()));
 		}
+		$command[] = escapeshellarg($url);
+		$command[] = $directory;
 		$output = $this->executeGitCommand($command);
 		$payload->getResponse()->addOutputFromPlugin($this, $output);
 	}
