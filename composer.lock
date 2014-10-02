@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ca74dffe49e223b49f1b4eb3f6283d24",
+    "hash": "7c79c6ac6599fb5ce17fc0ff116cd15e",
     "packages": [
         {
             "name": "milo/github-api",
@@ -51,16 +51,16 @@
         },
         {
             "name": "namelesscoder/gizzle",
-            "version": "1.0.3",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/NamelessCoder/gizzle.git",
-                "reference": "ba8579113a6c28b99cfe4604df35a8e9a2080fbb"
+                "reference": "6035d525bd0d92c8861aa1236f2bd0158eec484f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/NamelessCoder/gizzle/zipball/ba8579113a6c28b99cfe4604df35a8e9a2080fbb",
-                "reference": "ba8579113a6c28b99cfe4604df35a8e9a2080fbb",
+                "url": "https://api.github.com/repos/NamelessCoder/gizzle/zipball/6035d525bd0d92c8861aa1236f2bd0158eec484f",
+                "reference": "6035d525bd0d92c8861aa1236f2bd0158eec484f",
                 "shasum": ""
             },
             "require": {
@@ -98,7 +98,7 @@
                 "plugin",
                 "webhook"
             ],
-            "time": "2014-09-29 18:27:26"
+            "time": "2014-10-02 22:11:13"
         },
         {
             "name": "symfony/yaml",
@@ -1107,12 +1107,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Console.git",
-                "reference": "700dbb7648e89d0c8ce5337a9febc18dc84bcb6e"
+                "reference": "7049924cf0b7f350e5a099ea988e713ebf7590fe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Console/zipball/700dbb7648e89d0c8ce5337a9febc18dc84bcb6e",
-                "reference": "700dbb7648e89d0c8ce5337a9febc18dc84bcb6e",
+                "url": "https://api.github.com/repos/symfony/Console/zipball/7049924cf0b7f350e5a099ea988e713ebf7590fe",
+                "reference": "7049924cf0b7f350e5a099ea988e713ebf7590fe",
                 "shasum": ""
             },
             "require": {
@@ -1155,7 +1155,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "http://symfony.com",
-            "time": "2014-09-25 10:18:55"
+            "time": "2014-10-01 05:53:11"
         },
         {
             "name": "symfony/event-dispatcher",
@@ -1164,12 +1164,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/EventDispatcher.git",
-                "reference": "ea86d91a10c5737a1e043aa29fe05837f942d163"
+                "reference": "93d237c3da7565a9ad2b4b6a74af73f4e3c0c305"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/EventDispatcher/zipball/ea86d91a10c5737a1e043aa29fe05837f942d163",
-                "reference": "ea86d91a10c5737a1e043aa29fe05837f942d163",
+                "url": "https://api.github.com/repos/symfony/EventDispatcher/zipball/93d237c3da7565a9ad2b4b6a74af73f4e3c0c305",
+                "reference": "93d237c3da7565a9ad2b4b6a74af73f4e3c0c305",
                 "shasum": ""
             },
             "require": {
@@ -1213,7 +1213,7 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "http://symfony.com",
-            "time": "2014-09-28 16:15:31"
+            "time": "2014-10-01 05:53:11"
         },
         {
             "name": "symfony/filesystem",
