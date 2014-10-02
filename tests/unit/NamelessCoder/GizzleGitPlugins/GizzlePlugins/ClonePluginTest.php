@@ -50,7 +50,7 @@ class ClonePluginTest extends \PHPUnit_Framework_TestCase {
 					ClonePlugin::OPTION_BRANCH => 'master',
 					ClonePlugin::OPTION_REPOSITORY => 'foobar'
 				),
-				array('git', 'clone', escapeshellarg('foobar'), '.')
+				array('git', ClonePlugin::COMMAND, escapeshellarg('foobar'), '.')
 			),
 			array(
 				array(
@@ -59,7 +59,13 @@ class ClonePluginTest extends \PHPUnit_Framework_TestCase {
 					ClonePlugin::OPTION_REPOSITORY => 'foobar',
 					ClonePlugin::OPTION_SINGLE => TRUE
 				),
-				array('git', 'clone', ClonePlugin::COMMAND_SINGLEBRANCH, escapeshellarg('master'), escapeshellarg('foobar'), '.')
+				array(
+					'git',
+					ClonePlugin::COMMAND,
+					ClonePlugin::COMMAND_SINGLEBRANCH,
+					ClonePlugin::COMMAND_BRANCH,
+					escapeshellarg('master'),
+					escapeshellarg('foobar'), '.')
 			),
 			array(
 				array(
@@ -68,7 +74,14 @@ class ClonePluginTest extends \PHPUnit_Framework_TestCase {
 					ClonePlugin::OPTION_REPOSITORY => 'foobar',
 					ClonePlugin::OPTION_DEPTH => 11
 				),
-				array('git', 'clone', ClonePlugin::COMMAND_DEPTH, 11, escapeshellarg('foobar'), '.')
+				array(
+					'git',
+					ClonePlugin::COMMAND,
+					ClonePlugin::COMMAND_DEPTH,
+					11,
+					escapeshellarg('foobar'),
+					'.'
+				)
 			),
 		);
 	}

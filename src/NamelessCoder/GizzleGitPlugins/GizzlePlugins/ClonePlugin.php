@@ -22,6 +22,7 @@ class ClonePlugin extends AbstractGitPlugin implements PluginInterface {
 	const COMMAND = 'clone';
 	const COMMAND_SINGLEBRANCH = '--single-branch';
 	const COMMAND_DEPTH = '--depth';
+	const COMMAND_BRANCH = '--branch';
 	const OPTION_DEPTH = 'depth';
 	const OPTION_SINGLE = 'single';
 
@@ -41,6 +42,7 @@ class ClonePlugin extends AbstractGitPlugin implements PluginInterface {
 		}
 		if (TRUE === (boolean) $this->getSettingValue(self::OPTION_SINGLE, FALSE)) {
 			$command[] = self::COMMAND_SINGLEBRANCH;
+			$command[] = self::COMMAND_BRANCH;
 			$command[] = escapeshellarg($this->getSettingValue(self::OPTION_BRANCH, $payload->getRepository()->getMasterBranch()));
 		}
 		$command[] = escapeshellarg($url);
