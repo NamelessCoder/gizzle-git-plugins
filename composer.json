@@ -15,12 +15,12 @@
 			"NamelessCoder\\GizzleGitPlugins\\": "src/NamelessCoder/GizzleGitPlugins/"
 		}
 	},
-	"minimum-stability": "dev",
+	"minimum-stability": "stable",
 	"require": {
-		"namelesscoder/gizzle": "1.2.*"
+		"namelesscoder/gizzle": "@stable"
 	},
 	"require-dev": {
-		"phpunit/phpunit": "4.3.*",
-		"satooshi/php-coveralls": "dev-master"
+		"phpunit/phpunit": "@stable",
+		"satooshi/php-coveralls": "@stable"
 	}
 }

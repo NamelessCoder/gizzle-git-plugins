@@ -1,7 +1,7 @@
 Gizzle: Git Plugins
 ===================
 
-[![Build Status](https://travis-ci.org/NamelessCoder/gizzle-git-plugins.svg?branch=master)](https://travis-ci.org/NamelessCoder/gizzle-git-plugins) [![Coverage Status](https://img.shields.io/coveralls/NamelessCoder/gizzle-git-plugins.svg)](https://coveralls.io/r/NamelessCoder/gizzle-git-plugins?branch=master) [![Reference Status](https://www.versioneye.com/php/namelesscoder:gizzle-git-plugins/reference_badge.svg)](https://www.versioneye.com/php/namelesscoder:gizzle-git-plugins/references) [![Dependency Status](https://www.versioneye.com/user/projects/542806df820067c36300006a/badge.svg)](https://www.versioneye.com/user/projects/542806df820067c36300006a) [![Latest Stable Version](https://poser.pugx.org/namelesscoder/gizzle-git-plugins/v/stable.svg)](https://packagist.org/packages/namelesscoder/gizzle-git-plugins) [![Total Downloads](https://poser.pugx.org/namelesscoder/gizzle-git-plugins/downloads.svg)](https://packagist.org/packages/namelesscoder/gizzle-git-plugins)
+[![Build Status](https://img.shields.io/jenkins/s/https/jenkins.fluidtypo3.org/gizzle-git-plugins.svg?style=flat-square)](https://jenkins.fluidtypo3.org/job/gizzle-git-plugins/) [![Coverage Status](https://img.shields.io/coveralls/NamelessCoder/gizzle-git-plugins.svg?style=flat-square)](https://coveralls.io/r/NamelessCoder/gizzle-git-plugins?branch=master)
 
 Plugins to perform Git operations from a [Gizzle GitHub Webhook Listener](https://github.com/NamelessCoder/gizzle).
 
