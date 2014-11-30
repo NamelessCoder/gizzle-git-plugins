@@ -1,7 +1,7 @@
 Gizzle: Git Plugins
 ===================
 
-[![Build Status](https://img.shields.io/jenkins/s/https/jenkins.fluidtypo3.org/gizzle-git-plugins.svg?style=flat-square)](https://jenkins.fluidtypo3.org/job/gizzle-git-plugins/) [![Coverage Status](https://img.shields.io/coveralls/NamelessCoder/gizzle-git-plugins.svg?style=flat-square)](https://coveralls.io/r/NamelessCoder/gizzle-git-plugins?branch=master)
+[![Build Status](https://img.shields.io/jenkins/s/https/jenkins.fluidtypo3.org/gizzle-git-plugins.svg?style=flat-square)](https://jenkins.fluidtypo3.org/job/gizzle-git-plugins/) [![Coverage Status](https://img.shields.io/coveralls/NamelessCoder/gizzle-git-plugins.svg?style=flat-square)](https://coveralls.io/r/NamelessCoder/gizzle-git-plugins?branch=master) [![Latest Stable Version](https://img.shields.io/packagist/v/NamelessCoder/gizzle-git-plugins.svg?style=flat-square)](https://packagist.org/packages/namelesscoder/gizzle-git-plugins) [![Total Downloads](https://img.shields.io/packagist/dt/NamelessCoder/gizzle-git-plugins.svg?style=flat-square)](https://packagist.org/packages/namelesscoder/gizzle-git-plugins)
 
 Plugins to perform Git operations from a [Gizzle GitHub Webhook Listener](https://github.com/NamelessCoder/gizzle).
 
