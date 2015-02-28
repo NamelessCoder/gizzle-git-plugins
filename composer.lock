@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3a30cae0b86d435ec7d1c00b3b79895b",
+    "hash": "892dc8763ed792704b80fa0653c824ff",
     "packages": [
         {
             "name": "milo/github-api",
@@ -51,16 +51,16 @@
         },
         {
             "name": "namelesscoder/gizzle",
-            "version": "1.3.1",
+            "version": "1.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/NamelessCoder/gizzle.git",
-                "reference": "47c038f24cd567b3402720136c337dec4ab52c13"
+                "reference": "e80edc09aa25e4eea913e12d698d47957959c8ab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/NamelessCoder/gizzle/zipball/47c038f24cd567b3402720136c337dec4ab52c13",
-                "reference": "47c038f24cd567b3402720136c337dec4ab52c13",
+                "url": "https://api.github.com/repos/NamelessCoder/gizzle/zipball/e80edc09aa25e4eea913e12d698d47957959c8ab",
+                "reference": "e80edc09aa25e4eea913e12d698d47957959c8ab",
                 "shasum": ""
             },
             "require": {
@@ -74,7 +74,7 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "NamelessCoder\\Gizzle\\": "src/NamelessCoder/Gizzle/"
+                    "NamelessCoder\\Gizzle\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -96,7 +96,7 @@
                 "plugin",
                 "webhook"
             ],
-            "time": "2015-02-25 02:33:40"
+            "time": "2015-02-28 16:05:12"
         },
         {
             "name": "symfony/yaml",

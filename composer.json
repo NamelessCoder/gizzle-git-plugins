@@ -10,13 +10,13 @@
 	],
 	"autoload": {
 		"psr-4": {
-			"NamelessCoder\\GizzleGitPlugins\\": "src/NamelessCoder/GizzleGitPlugins/"
+			"NamelessCoder\\GizzleGitPlugins\\": "src/"
 		}
 	},
 	"autoload-dev": {
 		"psr-4": {
-			"NamelessCoder\\GizzleGitPlugins\\Tests\\Fixtures\\": "tests/fixtures/NamelessCoder/GizzleGitPlugins/",
-			"NamelessCoder\\GizzleGitPlugins\\Tests\\Unit\\": "tests/unit/NamelessCoder/GizzleGitPlugins/"
+			"NamelessCoder\\GizzleGitPlugins\\Tests\\Fixtures\\": "tests/fixtures/",
+			"NamelessCoder\\GizzleGitPlugins\\Tests\\Unit\\": "tests/unit/"
 		}
 	},
 	"minimum-stability": "stable",
