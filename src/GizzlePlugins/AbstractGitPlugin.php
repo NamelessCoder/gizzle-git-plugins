@@ -82,7 +82,9 @@ abstract class AbstractGitPlugin extends AbstractPlugin implements PluginInterfa
 		$output = array();
 		$code = $this->executeCommand($command, $output);
 		if (0 < $code) {
-			throw new \RuntimeException(sprintf('Command failed! Code %d, Message was: "%s"', $code, implode(PHP_EOL, $output)));
+			throw new \RuntimeException(
+				sprintf('Git command "%s" failed! Code %d, Message was: "%s"', $command, $code, implode(PHP_EOL, $output))
+			);
 		}
 		return $output;
 	}
