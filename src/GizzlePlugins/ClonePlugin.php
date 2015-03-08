@@ -13,6 +13,7 @@ namespace NamelessCoder\GizzleGitPlugins\GizzlePlugins;
 
 use NamelessCoder\Gizzle\Payload;
 use NamelessCoder\Gizzle\PluginInterface;
+use NamelessCoder\Gizzle\Repository;
 
 /**
  * Class ClonePlugin
@@ -32,7 +33,7 @@ class ClonePlugin extends AbstractGitPlugin implements PluginInterface {
 	public function process(Payload $payload) {
 		$directory = $this->getDirectorySettingOrFail(FALSE);
 		$directory = sprintf($directory, $payload->getRepository()->getName());
-		$url = $this->getSettingValue(self::OPTION_REPOSITORY, $payload->getRepository()->getUrl());
+		$url = $this->getSettingValue(self::OPTION_REPOSITORY, $payload->getRepository()->resolveApiUrl(Repository::API_URL_CLONE));
 		$depth = $this->getSettingValue(self::OPTION_DEPTH, 0);
 		$git = $this->resolveGitCommand();
 		$command = array($git, self::COMMAND);
