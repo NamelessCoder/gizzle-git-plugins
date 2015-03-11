@@ -25,6 +25,7 @@ abstract class AbstractGitPlugin extends AbstractPlugin implements PluginInterfa
 	const OPTION_DIRECTORY = 'directory';
 	const OPTION_REPOSITORY = 'remote';
 	const OPTION_BRANCH = 'branch';
+	const OPTION_GITCOMMAND = 'gitCommand';
 
 	/**
 	 * Analyse $payload and return TRUE if this plugin should
@@ -68,7 +69,7 @@ abstract class AbstractGitPlugin extends AbstractPlugin implements PluginInterfa
 	 * @return string
 	 */
 	protected function resolveGitCommand() {
-		return $this->getGitCommandResolver()->resolveGitCommand();
+		return $this->getSettingValue(self::OPTION_GITCOMMAND, $this->getGitCommandResolver()->resolveGitCommand());
 	}
 
 	/**
