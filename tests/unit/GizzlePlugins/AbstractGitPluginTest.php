@@ -40,20 +40,11 @@ class AbstractGitPluginTest extends \PHPUnit_Framework_TestCase {
 		$this->assertNotEmpty($output);
 	}
 
-	public function testGetGitCommandResolverReturnsGitCommandResolver() {
-		$plugin = new AccessibleGitPlugin();
-		$resolver = $plugin->getGitCommandResolver();
-		$this->assertInstanceOf('NamelessCoder\\GizzleGitPlugins\\Resolver\\GitCommandResolver', $resolver);
-	}
-
-	public function testResolveGitCommandDelegatesToGitCommandResolver() {
-		$resolver = $this->getMock('NamelessCoder\\GizzleGitPlugins\\Resolver\\GitCommandResolver', array('resolveGitCommand'));
-		$resolver->expects($this->once())->method('resolveGitCommand')->will($this->returnValue('foobar'));
+	public function testResolveGitCommandReturnsDefault() {
 		$plugin = $this->getMockForAbstractClass('NamelessCoder\\GizzleGitPlugins\\GizzlePlugins\\AbstractGitPlugin',
-			array(), '', FALSE, FALSE, TRUE, array('getGitCommandResolver'));
-		$plugin->expects($this->once())->method('getGitCommandResolver')->will($this->returnValue($resolver));
+			array(), '', FALSE, FALSE, TRUE, array('dummy'));
 		$result = $this->callInaccessibleMethod($plugin, 'resolveGitCommand');
-		$this->assertEquals('foobar', $result);
+		$this->assertEquals(AbstractGitPlugin::DEFAULT_GITCOMMAND, $result);
 	}
 
 	/**

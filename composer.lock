@@ -51,16 +51,16 @@
         },
         {
             "name": "namelesscoder/gizzle",
-            "version": "1.5.2",
+            "version": "1.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/NamelessCoder/gizzle.git",
-                "reference": "60a9339a5baeb515ec232601fb4724330451e62c"
+                "reference": "c732a221f6dc0476fdcb59d57df90abc8c59a6ee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/NamelessCoder/gizzle/zipball/60a9339a5baeb515ec232601fb4724330451e62c",
-                "reference": "60a9339a5baeb515ec232601fb4724330451e62c",
+                "url": "https://api.github.com/repos/NamelessCoder/gizzle/zipball/c732a221f6dc0476fdcb59d57df90abc8c59a6ee",
+                "reference": "c732a221f6dc0476fdcb59d57df90abc8c59a6ee",
                 "shasum": ""
             },
             "require": {
@@ -96,7 +96,7 @@
                 "plugin",
                 "webhook"
             ],
-            "time": "2015-03-08 19:59:23"
+            "time": "2015-03-14 18:27:44"
         },
         {
             "name": "symfony/yaml",
